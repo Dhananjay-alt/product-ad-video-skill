@@ -1,0 +1,225 @@
+{
+ "out": "soundtrack.wav",
+ "fps": 30,
+ "duration": 18.0,
+ "end_frame": 494,
+ "break_frame": 406,
+ "cues": [
+  {
+   "frame": 0,
+   "sound": "swell",
+   "gain": 0.35,
+   "args": [
+    1.3
+   ]
+  },
+  {
+   "frame": 28,
+   "sound": "glint",
+   "gain": 0.5,
+   "args": [
+    1.2,
+    -0.6,
+    0.6
+   ]
+  },
+  {
+   "frame": 75,
+   "sound": "cut_hit",
+   "gain": 0.45
+  },
+  {
+   "frame": 76,
+   "sound": "whoosh",
+   "gain": 0.5,
+   "args": [
+    1.1,
+    200.0,
+    1900.0,
+    0.4,
+    -0.8,
+    0.6
+   ],
+   "kwargs": {
+    "width": 1.5
+   }
+  },
+  {
+   "frame": 99,
+   "sound": "air",
+   "gain": 0.3
+  },
+  {
+   "frame": 138,
+   "sound": "cut_hit",
+   "gain": 0.18
+  },
+  {
+   "frame": 150,
+   "sound": "cut_hit",
+   "gain": 0.3
+  },
+  {
+   "frame": 163,
+   "sound": "air",
+   "gain": 0.28
+  },
+  {
+   "frame": 188,
+   "sound": "glint",
+   "gain": 0.5,
+   "args": [
+    1.1,
+    0.6,
+    -0.6
+   ]
+  },
+  {
+   "frame": 235,
+   "sound": "cut_hit",
+   "gain": 0.4
+  },
+  {
+   "frame": 236,
+   "sound": "whoosh",
+   "gain": 0.5,
+   "args": [
+    0.95,
+    300.0,
+    2600.0,
+    0.55,
+    0.9,
+    0.2
+   ]
+  },
+  {
+   "frame": 261,
+   "sound": "click",
+   "gain": 0.45,
+   "args": [
+    0.3
+   ]
+  },
+  {
+   "frame": 263,
+   "sound": "air",
+   "gain": 0.28
+  },
+  {
+   "frame": 320,
+   "sound": "cut_hit",
+   "gain": 0.45
+  },
+  {
+   "frame": 321,
+   "sound": "whoosh",
+   "gain": 0.6,
+   "args": [
+    1.0,
+    130.0,
+    1300.0,
+    0.55,
+    -0.2,
+    0.2
+   ],
+   "kwargs": {
+    "width": 1.6
+   }
+  },
+  {
+   "frame": 349,
+   "sound": "air",
+   "gain": 0.28
+  },
+  {
+   "frame": 351,
+   "sound": "lock",
+   "gain": 0.6,
+   "args": [
+    0.2
+   ]
+  },
+  {
+   "frame": 370,
+   "sound": "glint",
+   "gain": 0.45,
+   "args": [
+    1.0,
+    -0.6,
+    0.6
+   ]
+  },
+  {
+   "frame": 405,
+   "sound": "cut_hit",
+   "gain": 0.45
+  },
+  {
+   "frame": 406,
+   "sound": "riser",
+   "gain": 0.5,
+   "args": [
+    2.93
+   ]
+  },
+  {
+   "frame": 432,
+   "sound": "whoosh",
+   "gain": 0.3,
+   "args": [
+    0.7,
+    400.0,
+    2200.0,
+    0.5,
+    0.6,
+    -0.6
+   ]
+  },
+  {
+   "frame": 494,
+   "sound": "impact",
+   "gain": 0.9
+  },
+  {
+   "frame": 496,
+   "sound": "air",
+   "gain": 0.3
+  },
+  {
+   "frame": 512,
+   "sound": "glint",
+   "gain": 0.2,
+   "args": [
+    0.9,
+    0.2,
+    0.6
+   ]
+  }
+ ],
+ "voiceover": [
+  {
+   "file": "vo/vo-1.wav",
+   "start": 0.6
+  },
+  {
+   "file": "vo/vo-2.wav",
+   "start": 3.3
+  },
+  {
+   "file": "vo/vo-3.wav",
+   "start": 5.5
+  },
+  {
+   "file": "vo/vo-4.wav",
+   "start": 8.6
+  },
+  {
+   "file": "vo/vo-5.wav",
+   "start": 11.6
+  },
+  {
+   "file": "vo/vo-6.wav",
+   "start": 14.3
+  }
+ ]
+}
