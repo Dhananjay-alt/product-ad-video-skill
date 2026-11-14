@@ -18,5 +18,9 @@
     "marketing",
     "launch",
     "tts"
-  ]
+  ],
+  "documentationUrl": "https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/plugins/product-ad-video#readme",
+  "supportUrl": "https://github.com/Dhananjay-alt/product-ad-video-skill/issues",
+  "privacyPolicyUrl": "https://github.com/Dhananjay-alt/product-ad-video-skill/blob/main/plugins/product-ad-video/PRIVACY.md",
+  "termsOfServiceUrl": "https://github.com/Dhananjay-alt/product-ad-video-skill/blob/main/plugins/product-ad-video/LICENSE"
 }
