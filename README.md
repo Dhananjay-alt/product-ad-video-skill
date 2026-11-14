@@ -11,7 +11,8 @@
 
 <sub>An 18-second ad for <a href="https://ghostcommits.netlify.app">GhostCommits</a>, made with this skill. Every frame, sound and voice line came from scripts.</sub>
 
-**▶ Watch with sound:** [GhostCommits 3D](assets/videos/ghostcommits-3d.mp4) · [GhostCommits 2D](assets/videos/ghostcommits-2d.mp4) · [Voltkit 3D (logo + ad.json only)](assets/videos/voltkit-3d.mp4)
+**▶ Watch with sound:** [GhostCommits 3D](assets/videos/ghostcommits-3d.mp4) · [GhostCommits 2D](assets/videos/ghostcommits-2d.mp4) · [Voltkit 3D (logo + ad.json only)](assets/videos/voltkit-3d.mp4)<br>
+<sub>All three are also in the [v1.0.0 release](https://github.com/Dhananjay-alt/product-ad-video-skill/releases/tag/v1.0.0) to download.</sub>
 
 </div>
 
