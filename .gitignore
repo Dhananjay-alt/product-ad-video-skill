@@ -2,3 +2,4 @@ __pycache__/
 *.wav
 *.mp4
 vo-out/
+!assets/videos/*.mp4

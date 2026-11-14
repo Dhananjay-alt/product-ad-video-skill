@@ -11,6 +11,8 @@
 
 <sub>An 18-second ad for <a href="https://ghostcommits.netlify.app">GhostCommits</a>, made with this skill. Every frame, sound and voice line came from scripts.</sub>
 
+**▶ Watch with sound:** [GhostCommits 3D](assets/videos/ghostcommits-3d.mp4) · [GhostCommits 2D](assets/videos/ghostcommits-2d.mp4) · [Voltkit 3D (logo + ad.json only)](assets/videos/voltkit-3d.mp4)
+
 </div>
 
 ---
@@ -159,8 +161,10 @@ product-ad-video/
 │   ├── blender-3d.md         the "Apple ad" look: lights, materials, camera, gotchas
 │   ├── sound.md              what each sound is for, gains, loudness targets
 │   └── voiceover.md          voice options compared, line-writing tips
-└── examples/ghostcommits/    the real files behind the ad above
-    ├── storyboard-v2.md
+└── examples/ghostcommits/    the real files behind the GhostCommits ads
+    ├── storyboard-v1.md      2D ad storyboard
+    ├── GhostAdV1.tsx         2D ad, fully hand-animated in Remotion
+    ├── storyboard-v2.md      3D ad storyboard
     ├── ghost_scene.py        Blender scene: modelling, lighting, camera, render
     ├── GhostAdV2.tsx         Remotion text overlay and end card
     ├── cues-v2.json          the sound cue sheet
