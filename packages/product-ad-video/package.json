@@ -2,12 +2,39 @@
   "name": "product-ad-video",
   "version": "1.1.0",
   "description": "Make product launch videos in code: SVG logo to 3D ad (Blender) or 2D motion graphics (Remotion), with synthesized sound and optional voiceover. The engine behind the Product Ad Video plugin for Claude Code.",
-  "bin": { "product-ad-video": "bin/cli.js" },
-  "files": ["bin", "scripts/*.py", "template", "README.md", "LICENSE"],
-  "engines": { "node": ">=18" },
-  "keywords": ["video", "remotion", "blender", "motion-graphics", "claude-code", "launch", "tts"],
+  "bin": {
+    "product-ad-video": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "scripts/*.py",
+    "template",
+    "!template/public/audio",
+    "!template/public/frames",
+    "!template/out",
+    "!template/node_modules",
+    "!template/cues.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "video",
+    "remotion",
+    "blender",
+    "motion-graphics",
+    "claude-code",
+    "launch",
+    "tts"
+  ],
   "homepage": "https://github.com/Dhananjay-alt/product-ad-video-skill",
-  "repository": { "type": "git", "url": "git+https://github.com/Dhananjay-alt/product-ad-video-skill.git", "directory": "packages/product-ad-video" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhananjay-alt/product-ad-video-skill.git",
+    "directory": "packages/product-ad-video"
+  },
   "bugs": "https://github.com/Dhananjay-alt/product-ad-video-skill/issues",
   "author": "Dhananjay Hire",
   "license": "MIT"
