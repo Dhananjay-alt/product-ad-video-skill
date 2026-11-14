@@ -24,14 +24,14 @@ export const Terminal: React.FC<{ f: number }> = ({ f }) => {
   lines.push({ at: END_START - 20, text: "$ _", color: C.text, speed: 9 });
 
   const shown = lines.filter((l) => f >= l.at);
-  const keep = L.landscape ? 8 : 11;
+  const keep = L.landscape ? 8 : L.square ? 7 : 11;
   const visible = shown.slice(-keep);
-  const base = (L.landscape ? 52 : 50) * L.u;
+  const base = (L.landscape ? 52 : L.square ? 44 : 50) * L.u;
   const fade = prog(f, END_START, END_START + 12);
   const blink = Math.floor(f / 15) % 2 === 0;
   const last = shown[shown.length - 1];
   const W = L.landscape ? 1640 * L.u : L.width - 70 * L.u;
-  const Hh = L.landscape ? 880 * L.u : 1240 * L.u;
+  const Hh = L.landscape ? 880 * L.u : L.square ? 900 * L.u : 1240 * L.u;
 
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, fontFamily: MONO }}>

@@ -52,7 +52,12 @@ paints every logo layer above the base in the accent colour in 3D.
 ## Step 3 — Visuals
 
 - **2D styles:** nothing to do — the template renders from ad.json.
-- **apple3d:** render the 3D frames with Blender 4.2+ (headless; a few minutes on a laptop GPU):
+- **apple3d:** render the 3D frames with Blender 4.2+ (headless; a few minutes on a laptop GPU).
+  Find Blender first: `blender` on PATH, else `C:\Program Files\Blender Foundation\Blender */blender.exe`,
+  a Steam install (`<Steam library>\steamapps\common\Blender\blender.exe`),
+  `/Applications/Blender.app/Contents/MacOS/Blender`, or `flatpak run org.blender.Blender`.
+  If there's none, tell the user and offer a 2D style instead. Run the full `anim` render in the
+  background (it takes minutes) and wait for it to finish:
   ```bash
   blender -b --factory-startup -P ${CLAUDE_SKILL_DIR}/scripts/logo_ad.py -- ad.json still out/stills      # check first
   blender -b --factory-startup -P ${CLAUDE_SKILL_DIR}/scripts/logo_ad.py -- ad.json anim public/frames    # then all frames

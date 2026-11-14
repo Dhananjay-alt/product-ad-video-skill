@@ -18,7 +18,8 @@ export const useLayout = () => {
   const { width, height } = useVideoConfig();
   const vertical = height > width;
   const landscape = width > height;
-  return { width, height, vertical, landscape, u: Math.min(width, height) / 1080 };
+  const square = width === height;
+  return { width, height, vertical, landscape, square, u: Math.min(width, height) / 1080 };
 };
 
 /* The logo file sits in public/; ad.json may say "public/logo.svg" or "logo.svg". */
