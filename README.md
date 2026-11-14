@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🎬 product-ad-video
+<img src="plugins/product-ad-video/.claude-plugin/icon.png" alt="" width="112">
+
+# product-ad-video
 
 **A Claude Code skill that makes product launch videos entirely in code.**
 
