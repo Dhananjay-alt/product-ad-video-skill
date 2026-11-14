@@ -25,7 +25,7 @@ use a concrete fact ("1 command", "Open source").
 ## Step 2 — Set up the project
 
 ```bash
-cp -r <skill>/template ad && cd ad && npm i
+cp -r ${CLAUDE_SKILL_DIR}/template ad && cd ad && npm i
 ```
 Put the logo at `ad/public/logo.svg` (see "Logo" below). Write `ad/ad.json`:
 
@@ -54,8 +54,8 @@ paints every logo layer above the base in the accent colour in 3D.
 - **2D styles:** nothing to do — the template renders from ad.json.
 - **apple3d:** render the 3D frames with Blender 4.2+ (headless; a few minutes on a laptop GPU):
   ```bash
-  blender -b --factory-startup -P <skill>/scripts/logo_ad.py -- ad.json still out/stills      # check first
-  blender -b --factory-startup -P <skill>/scripts/logo_ad.py -- ad.json anim public/frames    # then all frames
+  blender -b --factory-startup -P ${CLAUDE_SKILL_DIR}/scripts/logo_ad.py -- ad.json still out/stills      # check first
+  blender -b --factory-startup -P ${CLAUDE_SKILL_DIR}/scripts/logo_ad.py -- ad.json anim public/frames    # then all frames
   ```
   Look at the stills before the full render (one per shot + the end). Re-run `anim` after any
   change to `shots` count or `aspect` — the frames must match ad.json.
@@ -74,10 +74,10 @@ Look at stills of every shot in the chosen aspect before rendering.
 ## Step 4 — Sound
 
 ```bash
-python <skill>/scripts/auto_cues.py ad.json
+python ${CLAUDE_SKILL_DIR}/scripts/auto_cues.py ad.json
 ```
 Writes `public/audio/soundtrack.wav` (Remotion picks it up automatically) and `cues.json`
-(hand-tune it, then `python <skill>/scripts/score.py cues.json`). Everything is synthesized:
+(hand-tune it, then `python ${CLAUDE_SKILL_DIR}/scripts/score.py cues.json`). Everything is synthesized:
 style-specific cues (cuts, whooshes, glints, pops, keystrokes) on exact frames plus a 96 BPM music
 bed that drops before the end card and resolves on it. It prints loudness per second; body
 around −22…−14 dBFS with the end hit loudest is healthy. Details: `references/sound.md`.
@@ -87,7 +87,7 @@ around −22…−14 dBFS with the end hit loudest is healthy. Details: `referen
 Write N+2 short lines (≤ 6 words): one for the hook, one per shot, one for the end card
 (name + tagline). Then:
 ```bash
-python <skill>/scripts/kokoro_tts.py lines.txt vo am_michael     # free hosted Kokoro
+python ${CLAUDE_SKILL_DIR}/scripts/kokoro_tts.py lines.txt vo am_michael     # free hosted Kokoro
 ```
 Set `"voiceover": ["vo/am_michael/vo-1.wav", ...]` in ad.json and re-run `auto_cues.py`;
 it places each line on its shot and ducks the music. It prints each line's span — make sure no

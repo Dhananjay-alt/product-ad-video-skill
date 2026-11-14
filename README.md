@@ -56,10 +56,10 @@ Set `"aspect"` to `landscape` (16:9), `vertical` (9:16 for Reels, TikTok and Sho
 ## Quick start (without Claude)
 
 ```bash
-cp -r product-ad-video/template my-ad && cd my-ad && npm i
+cp -r plugins/product-ad-video/skills/product-ad-video/template my-ad && cd my-ad && npm i
 # edit ad.json, put your logo at public/logo.svg
-blender -b --factory-startup -P ../product-ad-video/scripts/logo_ad.py -- ad.json anim public/frames   # apple3d only
-python ../product-ad-video/scripts/auto_cues.py ad.json
+blender -b --factory-startup -P ../plugins/product-ad-video/skills/product-ad-video/scripts/logo_ad.py -- ad.json anim public/frames   # apple3d only
+python ../plugins/product-ad-video/skills/product-ad-video/scripts/auto_cues.py ad.json
 npx remotion render Ad out/ad.mp4
 ```
 
@@ -74,28 +74,39 @@ Your logo must be an SVG of filled shapes; convert strokes and text to paths fir
 
 ## Install
 
+In Claude Code (2.1.275 or later), one command:
+
+```text
+/plugin install product-ad-video --marketplace Dhananjay-alt/product-ad-video-skill
+```
+
+Or in two steps, on any version:
+
+```text
+/plugin marketplace add Dhananjay-alt/product-ad-video-skill
+/plugin install product-ad-video@product-ad-video-skill
+```
+
+Then, in any project:
+
+```text
+/product-ad-video:ad
+/product-ad-video:ad terminal vertical voice
+```
+
+Or just ask in plain words: *"make a launch video for this repo"*. The skill loads on its own.
+
+<details>
+<summary>Install as a plain skill instead (no plugin)</summary>
+
+Clone the repo and copy the skill folder into a skills directory: `~/.claude/skills/` for all projects, or `<repo>/.claude/skills/` for one.
+
 ```bash
 git clone https://github.com/Dhananjay-alt/product-ad-video-skill.git
+mkdir -p ~/.claude/skills && cp -r product-ad-video-skill/plugins/product-ad-video/skills/product-ad-video ~/.claude/skills/
 ```
 
-Copy the `product-ad-video/` folder into a skills directory:
-
-| Scope | Location |
-|---|---|
-| All your projects | `~/.claude/skills/product-ad-video/` |
-| One project | `<repo>/.claude/skills/product-ad-video/` |
-
-On macOS/Linux:
-```bash
-mkdir -p ~/.claude/skills && cp -r product-ad-video-skill/product-ad-video ~/.claude/skills/
-```
-
-On Windows (PowerShell):
-```powershell
-Copy-Item -Recurse product-ad-video-skill\product-ad-video $HOME\.claude\skills\
-```
-
-Start Claude Code in your project and ask for a video. The skill loads automatically.
+</details>
 
 ### Requirements
 
@@ -108,18 +119,18 @@ Start Claude Code in your project and ask for a video. The skill loads automatic
 
 ## Use the scripts on their own
 
-Both scripts work without Claude.
+Both scripts work without Claude, from the repo root.
 
 **Generate voiceover lines** (one line per row in a text file; Python standard library only):
 
 ```bash
-python product-ad-video/scripts/kokoro_tts.py lines.txt vo/ am_michael af_heart
+python plugins/product-ad-video/skills/product-ad-video/scripts/kokoro_tts.py lines.txt vo/ am_michael af_heart
 ```
 
 **Score a video from a cue sheet:**
 
 ```bash
-python product-ad-video/scripts/score.py cues.json
+python plugins/product-ad-video/skills/product-ad-video/scripts/score.py cues.json
 ```
 
 ```jsonc
@@ -143,32 +154,37 @@ It prints loudness per second, so you can sanity-check the mix without listening
 ## What's inside
 
 ```
-product-ad-video/
-├── SKILL.md                  the workflow Claude follows
-├── template/                 Remotion project: copy it, edit ad.json, render
-│   ├── ad.json               name, tagline, shots, colours, style, aspect
-│   ├── public/logo.svg       your logo goes here
-│   └── src/styles/           Apple3D · Wrapped · Terminal · Minimal
-├── scripts/
-│   ├── logo_ad.py            Blender: any SVG logo → 3D ad frames
-│   ├── auto_cues.py          ad.json → soundtrack (style-aware cues + music + voice)
-│   ├── score.py              hand-written cue sheet → soundtrack
-│   ├── kokoro_tts.py         text → voice clips via hosted Kokoro
-│   └── adspec.py             shared ad.json reader + shot timing
-├── references/
-│   ├── storyboard.md         shot-list template
-│   ├── remotion-2d.md        2D motion patterns: easing, staggering, type sizes
-│   ├── blender-3d.md         the "Apple ad" look: lights, materials, camera, gotchas
-│   ├── sound.md              what each sound is for, gains, loudness targets
-│   └── voiceover.md          voice options compared, line-writing tips
-└── examples/ghostcommits/    the real files behind the GhostCommits ads
-    ├── storyboard-v1.md      2D ad storyboard
-    ├── GhostAdV1.tsx         2D ad, fully hand-animated in Remotion
-    ├── storyboard-v2.md      3D ad storyboard
-    ├── ghost_scene.py        Blender scene: modelling, lighting, camera, render
-    ├── GhostAdV2.tsx         Remotion text overlay and end card
-    ├── cues-v2.json          the sound cue sheet
-    └── vo-lines.txt          the voiceover script
+.claude-plugin/marketplace.json   the marketplace (one plugin)
+plugins/product-ad-video/
+├── .claude-plugin/plugin.json
+└── skills/
+    ├── ad/SKILL.md           /product-ad-video:ad, the one-command entry point
+    └── product-ad-video/     the skill itself
+        ├── SKILL.md                  the workflow Claude follows
+        ├── template/                 Remotion project: copy it, edit ad.json, render
+        │   ├── ad.json               name, tagline, shots, colours, style, aspect
+        │   ├── public/logo.svg       your logo goes here
+        │   └── src/styles/           Apple3D · Wrapped · Terminal · Minimal
+        ├── scripts/
+        │   ├── logo_ad.py            Blender: any SVG logo → 3D ad frames
+        │   ├── auto_cues.py          ad.json → soundtrack (style-aware cues + music + voice)
+        │   ├── score.py              hand-written cue sheet → soundtrack
+        │   ├── kokoro_tts.py         text → voice clips via hosted Kokoro
+        │   └── adspec.py             shared ad.json reader + shot timing
+        ├── references/
+        │   ├── storyboard.md         shot-list template
+        │   ├── remotion-2d.md        2D motion patterns: easing, staggering, type sizes
+        │   ├── blender-3d.md         the "Apple ad" look: lights, materials, camera, gotchas
+        │   ├── sound.md              what each sound is for, gains, loudness targets
+        │   └── voiceover.md          voice options compared, line-writing tips
+        └── examples/ghostcommits/    the real files behind the GhostCommits ads
+            ├── storyboard-v1.md      2D ad storyboard
+            ├── GhostAdV1.tsx         2D ad, fully hand-animated in Remotion
+            ├── storyboard-v2.md      3D ad storyboard
+            ├── ghost_scene.py        Blender scene: modelling, lighting, camera, render
+            ├── GhostAdV2.tsx         Remotion text overlay and end card
+            ├── cues-v2.json          the sound cue sheet
+            └── vo-lines.txt          the voiceover script
 ```
 
 ## Voice options

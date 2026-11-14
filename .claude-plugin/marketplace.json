@@ -1,0 +1,12 @@
+{
+  "name": "product-ad-video-skill",
+  "description": "Code-made product launch videos for Claude Code",
+  "owner": { "name": "Dhananjay Hire", "url": "https://github.com/Dhananjay-alt" },
+  "plugins": [
+    {
+      "name": "product-ad-video",
+      "source": "./plugins/product-ad-video",
+      "description": "Your SVG logo as a glossy 3D product ad, or 2D motion graphics, with synthesized sound and AI voiceover. Landscape, vertical or square."
+    }
+  ]
+}
