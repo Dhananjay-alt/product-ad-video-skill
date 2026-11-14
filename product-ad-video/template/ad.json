@@ -1,0 +1,19 @@
+{
+  "name": "Voltkit",
+  "tagline": "Ship faster. Sleep better.",
+  "url": "voltkit.dev",
+  "badge": "Public beta",
+  "logo": "public/logo.svg",
+  "colors": { "bg": "#000000", "text": "#f5f5f7", "secondary": "#a1a1aa", "accent": "#ffc53d" },
+  "style": "apple3d",
+  "aspect": "landscape",
+  "hook": "Deploys, rethought.",
+  "command": "npx voltkit deploy",
+  "shots": [
+    { "big": "Meet Voltkit.", "caption": "One CLI for build, test and deploy." },
+    { "big": "9 s", "caption": "median deploy on the demo app." },
+    { "big": "0 config", "caption": "files to start. It reads your repo." },
+    { "big": "Rollback", "caption": "any deploy with one command." }
+  ],
+  "voiceover": []
+}

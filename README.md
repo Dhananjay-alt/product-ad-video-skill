@@ -19,20 +19,49 @@
 
 Ask Claude Code for a promo video:
 
-> *"Make an 18-second product ad for this repo, 3D style, with a voiceover."*
+> *"Make an 18-second product ad for this repo, 3D style, vertical, with a voiceover."*
 
 Claude reads your project, then runs the same steps a motion designer would:
 
 | Step | What happens | Tool |
 |---|---|---|
 | **1. Brief** | Reads your README/site, pulls the pitch, proof points, brand colours and logo, and writes down what must **not** be claimed | Claude |
-| **2. Storyboard** | 5–6 shots of ~2.5 s, each with camera move, on-screen text and sound, saved as a `.md` you can edit | Claude |
-| **3. Visuals** | **2D:** kinetic type and shapes in React. **3D:** a glossy hero object in a black void with macro shots, light streaks and depth of field | Remotion / Blender (headless) |
-| **4. Sound** | Every effect and the music bed synthesized from code, cued to exact video frames | `scripts/score.py` |
+| **2. ad.json** | One small file with the name, tagline, 2–5 stats, colours, style and aspect ratio. Everything else reads from it | Claude |
+| **3. Visuals** | **3D:** your SVG logo becomes a glossy 3D object with macro shots, light streaks and depth of field. **2D:** three motion-graphics styles | Blender (headless) / Remotion |
+| **4. Sound** | Effects and music synthesized from code, placed on the exact frames of each cut | `scripts/auto_cues.py` |
 | **5. Voice** | Short punchy lines in a natural-sounding open-weight voice | `scripts/kokoro_tts.py` |
-| **6. Render** | Text overlaid on the frames, audio muxed in, exported as MP4 | Remotion |
+| **6. Render** | Text overlaid, audio mixed in, exported as MP4 | Remotion |
 
-<img src="assets/shots.jpg" alt="Six shots from the example ad" width="100%">
+## Four styles, any logo, any aspect
+
+<img src="assets/styles.jpg" alt="The same ad.json in the four styles: Apple 3D, Wrapped, Terminal and Minimal" width="100%">
+
+<sub>The same `ad.json` for a sample product, Voltkit, in each style. Only the `"style"` line changes.</sub>
+
+| Style | Looks like | Good for |
+|---|---|---|
+| `apple3d` | Your logo as a glossy 3D object in a black void; macro close-ups, light streaks, hard cuts | Products with a strong logo |
+| `wrapped` | Loud colour blocks, circle wipes, bouncing type, floating shapes | Consumer apps, fun launches |
+| `terminal` | A terminal types your command; each stat prints as a passing ✓ | Dev tools, CLIs, APIs |
+| `minimal` | Huge type rising word by word, one accent bar | Serious B2B, infrastructure |
+
+Set `"aspect"` to `landscape` (16:9), `vertical` (9:16 for Reels, TikTok and Shorts) or `square` (1:1). Layouts adapt automatically; in 3D the camera reframes so the logo always clears the text.
+
+<img src="assets/shots.jpg" alt="Six shots from the GhostCommits ad" width="100%">
+
+<sub>The GhostCommits ad at the top used a fully custom Blender scene (a hand-built mascot with props), included as an advanced example.</sub>
+
+## Quick start (without Claude)
+
+```bash
+cp -r product-ad-video/template my-ad && cd my-ad && npm i
+# edit ad.json, put your logo at public/logo.svg
+blender -b --factory-startup -P ../product-ad-video/scripts/logo_ad.py -- ad.json anim public/frames   # apple3d only
+python ../product-ad-video/scripts/auto_cues.py ad.json
+npx remotion render Ad out/ad.mp4
+```
+
+Your logo must be an SVG of filled shapes; convert strokes and text to paths first. A dark rounded square behind a coloured mark (app-icon style) looks best in 3D.
 
 ## Why code instead of an editor
 
@@ -114,9 +143,16 @@ It prints loudness per second, so you can sanity-check the mix without listening
 ```
 product-ad-video/
 ├── SKILL.md                  the workflow Claude follows
+├── template/                 Remotion project: copy it, edit ad.json, render
+│   ├── ad.json               name, tagline, shots, colours, style, aspect
+│   ├── public/logo.svg       your logo goes here
+│   └── src/styles/           Apple3D · Wrapped · Terminal · Minimal
 ├── scripts/
-│   ├── score.py              cue sheet → soundtrack (sfx + music + voice ducking)
-│   └── kokoro_tts.py         text → voice clips via hosted Kokoro
+│   ├── logo_ad.py            Blender: any SVG logo → 3D ad frames
+│   ├── auto_cues.py          ad.json → soundtrack (style-aware cues + music + voice)
+│   ├── score.py              hand-written cue sheet → soundtrack
+│   ├── kokoro_tts.py         text → voice clips via hosted Kokoro
+│   └── adspec.py             shared ad.json reader + shot timing
 ├── references/
 │   ├── storyboard.md         shot-list template
 │   ├── remotion-2d.md        2D motion patterns: easing, staggering, type sizes
