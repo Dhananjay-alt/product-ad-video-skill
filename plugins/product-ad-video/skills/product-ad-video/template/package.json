@@ -2,11 +2,6 @@
   "name": "product-ad",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "studio": "remotion studio",
-    "render": "remotion render Ad out/ad.mp4",
-    "still": "remotion still Ad out/still.png"
-  },
   "dependencies": {
     "@remotion/cli": "4.0.543",
     "@remotion/google-fonts": "4.0.543",
