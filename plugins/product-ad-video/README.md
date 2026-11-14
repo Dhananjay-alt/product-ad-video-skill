@@ -15,6 +15,14 @@ Make a short launch video for your product, entirely in code. Claude reads your 
 
 ## How to use
 
+Install in Claude Code (2.1.275 or later):
+
+```text
+/plugin install product-ad-video --marketplace Dhananjay-alt/product-ad-video-skill
+```
+
+Then, in any project:
+
 ```text
 /product-ad-video:ad
 /product-ad-video:ad terminal vertical voice
