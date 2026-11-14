@@ -1,6 +1,6 @@
 # 2D style in Remotion
 
-Setup: `npx create-video@latest --yes --blank --no-tailwind video && cd video && npm i`.
+Setup: `npx create-video@4.0.543 --yes --blank --no-tailwind video && cd video && npm i`.
 Register compositions in `src/Root.tsx` (1920×1080, 30 fps, durationInFrames = 540–600).
 
 Patterns that look good
@@ -14,6 +14,6 @@ Patterns that look good
 - Logo: inline the SVG as a component so parts can animate separately.
 - No CSS transitions/animations — Remotion renders frame by frame; everything derives from `useCurrentFrame()`.
 
-Preview: `npx remotion studio`. Single frame check: `npx remotion still <Id> out/f.png --frame=120`.
-Render: `npx remotion render <Id> out/ad.mp4`.
+Preview: `npx remotion@4.0.543 studio`. Single frame check: `npx remotion@4.0.543 still <Id> out/f.png --frame=120`.
+Render: `npx remotion@4.0.543 render <Id> out/ad.mp4`.
 Full example: `../examples/ghostcommits/GhostAdV2.tsx` (text overlay + end card).

@@ -13,7 +13,7 @@ const typed = (f: number, l: Line) => {
 
 export const Terminal: React.FC<{ f: number }> = ({ f }) => {
   const L = useLayout();
-  const cmd = AD.command ?? `npx ${AD.name.toLowerCase()}`;
+  const cmd = AD.command ?? AD.name.toLowerCase();
   const lines: Line[] = [{ at: 8, text: `$ ${cmd}`, color: C.text, bold: true, speed: 0.9 }];
   if (AD.hook) lines.push({ at: 50, text: `  ${AD.hook}`, color: C.secondary, speed: 3 });
   AD.shots.forEach((s, i) => {

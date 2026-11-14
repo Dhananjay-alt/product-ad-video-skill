@@ -8,7 +8,7 @@
   "style": "apple3d",
   "aspect": "landscape",
   "hook": "Deploys, rethought.",
-  "command": "npx voltkit deploy",
+  "command": "voltkit deploy",
   "shots": [
     { "big": "Meet Voltkit.", "caption": "One CLI for build, test and deploy." },
     { "big": "9 s", "caption": "median deploy on the demo app." },

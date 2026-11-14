@@ -1,10 +1,22 @@
 {
   "name": "product-ad-video",
-  "description": "Make product launch videos entirely in code: your SVG logo as a glossy 3D ad (Blender) or 2D motion graphics (Remotion), with synthesized sound and AI voiceover, in landscape, vertical or square.",
-  "version": "1.0.1",
-  "author": { "name": "Dhananjay Hire", "url": "https://github.com/Dhananjay-alt" },
+  "displayName": "Product Ad Video",
+  "description": "Make launch videos for your product in code: your SVG logo as a glossy 3D ad, or 2D motion graphics, with synthesized sound and an optional AI voiceover. Landscape, vertical or square. Requires Claude Code on your own computer.",
+  "version": "1.0.2",
+  "author": {
+    "name": "Dhananjay Hire",
+    "url": "https://github.com/Dhananjay-alt"
+  },
   "homepage": "https://github.com/Dhananjay-alt/product-ad-video-skill",
   "repository": "https://github.com/Dhananjay-alt/product-ad-video-skill",
   "license": "MIT",
-  "keywords": ["video", "remotion", "blender", "motion-graphics", "marketing", "launch", "tts"]
+  "keywords": [
+    "video",
+    "remotion",
+    "blender",
+    "motion-graphics",
+    "marketing",
+    "launch",
+    "tts"
+  ]
 }

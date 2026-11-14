@@ -53,7 +53,7 @@ def cues_for(ad):
                   cue(s + 20, "tick", 0.3, 3600, 0.3)]
         c += [cue(end - 2, "whoosh", 0.5, 0.8, 200, 2000, 0.55, -0.6, 0.6), cue(end + 6, "suck", 0.35, 0.5)]
     elif style == "terminal":
-        cmd = ad.get("command") or f"npx {ad['name'].lower()}"
+        cmd = ad.get("command") or ad["name"].lower()
         for k in range(0, int(len(cmd) / 0.9), 2):  # keystrokes while the command types
             c.append(cue(8 + k, "tick", 0.16, 3000 + 400 * (k % 3), -0.2 + 0.1 * (k % 4)))
         c.append(cue(8 + int(len(cmd) / 0.9) + 3, "click", 0.45))

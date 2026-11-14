@@ -38,7 +38,7 @@ Put the logo at `ad/public/logo.svg` (see "Logo" below). Write `ad/ad.json`:
   "style": "apple3d",            // apple3d | wrapped | terminal | minimal
   "aspect": "landscape",         // landscape 16:9 | vertical 9:16 | square 1:1
   "hook": "Deploys, rethought.", // opening line (2D styles; terminal prints it)
-  "command": "npx voltkit deploy", // terminal style only
+  "command": "voltkit deploy", // terminal style only
   "shots": [ { "big": "9 s", "caption": "median deploy on the demo app." }, ... ],  // 2–5 shots
   "voiceover": []                // optional, see Step 5
 }
@@ -65,7 +65,7 @@ paints every logo layer above the base in the accent colour in 3D.
   Look at the stills before the full render (one per shot + the end). Re-run `anim` after any
   change to `shots` count or `aspect` — the frames must match ad.json.
 
-Preview anytime: `npx remotion studio`. Single frame: `npx remotion still Ad out/f.png --frame=120`.
+Preview anytime: `npx remotion@4.0.543 studio`. Single frame: `npx remotion@4.0.543 still Ad out/f.png --frame=120`.
 Look at stills of every shot in the chosen aspect before rendering.
 
 ### Logo
@@ -101,7 +101,7 @@ line runs past the next one (shorten the line if it does). Options: `references/
 ## Step 6 — Render and deliver
 
 ```bash
-npx remotion render Ad out/ad.mp4
+npx remotion@4.0.543 render Ad out/ad.mp4
 ```
 Send the MP4 to the user. Say plainly you cannot hear audio: timing and levels were checked
 numerically. Offer the other aspect (vertical for social) — just change `aspect`, re-render
