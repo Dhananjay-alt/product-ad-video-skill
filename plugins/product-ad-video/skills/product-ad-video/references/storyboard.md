@@ -17,4 +17,4 @@ Tips
 - Shots ≈ 75 frames (one bar at 96 BPM) so cuts land on the beat.
 - One idea per shot. A number or a single word, then a 1–2 line caption.
 - End card text in at ~frame 494; leave ≥ 1.5 s of hold at the end.
-- See `../examples/ghostcommits/storyboard-v2.md` for a complete one.
+- See storyboard-v2.md in https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/examples/ghostcommits for a complete one.

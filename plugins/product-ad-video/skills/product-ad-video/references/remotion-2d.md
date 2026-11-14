@@ -14,6 +14,6 @@ Patterns that look good
 - Logo: inline the SVG as a component so parts can animate separately.
 - No CSS transitions/animations — Remotion renders frame by frame; everything derives from `useCurrentFrame()`.
 
-Preview: `npx remotion@4.0.543 studio`. Single frame check: `npx remotion@4.0.543 still <Id> out/f.png --frame=120`.
-Render: `npx remotion@4.0.543 render <Id> out/ad.mp4`.
-Full example: `../examples/ghostcommits/GhostAdV2.tsx` (text overlay + end card).
+Preview: `npx --package=@remotion/cli@4.0.543 remotion studio`. Single frame check: `npx --package=@remotion/cli@4.0.543 remotion still <Id> out/f.png --frame=120`.
+Render: `npx --package=@remotion/cli@4.0.543 remotion render <Id> out/ad.mp4`.
+Full example: GhostAdV2.tsx in https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/examples/ghostcommits (text overlay + end card).

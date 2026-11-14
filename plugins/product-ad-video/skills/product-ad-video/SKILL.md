@@ -8,10 +8,15 @@ description: Make a short product ad / launch video for any project entirely in 
 One file — `ad.json` — drives everything: the 3D scene, the text animation and the soundtrack all
 read it, so cuts, text and sound stay in sync automatically.
 
+The code lives in the public npm package **`product-ad-video`** (source:
+https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/packages/product-ad-video).
+Always run it at the exact version **1.1.0**, as written below — never `@latest` or unpinned.
+Tell the user once, before the first command, that you'll run this package via npx (it renders with the Remotion 4.0.543 that `npm install` puts in `ad/`).
+
 ```
-ad.json + logo.svg ─┬─► scripts/logo_ad.py (Blender) ─► public/frames/*.jpg ─┐   (apple3d only)
-                    ├─► scripts/auto_cues.py ─► public/audio/soundtrack.wav ─┼─► Remotion ─► out/ad.mp4
-                    └─► template/src (style: apple3d | wrapped | terminal | minimal) ─┘
+ad.json + logo.svg ─┬─► frames (Blender) ─► public/frames/*.jpg ─┐   (apple3d only)
+                    ├─► sound ─► public/audio/soundtrack.wav ────┼─► Remotion ─► out/ad.mp4
+                    └─► Remotion template (apple3d | wrapped | terminal | minimal) ┘
 ```
 
 ## Step 1 — Understand the product
@@ -24,10 +29,15 @@ use a concrete fact ("1 command", "Open source").
 
 ## Step 2 — Set up the project
 
+From the user's project folder:
 ```bash
-cp -r ${CLAUDE_SKILL_DIR}/template ad && cd ad && npm i
+npx product-ad-video@1.1.0 doctor                         # Node, Python + numpy/scipy, Blender
+npx product-ad-video@1.1.0 init ad --logo path/to/logo.svg # copies the Remotion template into ad/
+cd ad && npm install
 ```
-Put the logo at `ad/public/logo.svg` (see "Logo" below). Write `ad/ad.json`:
+`doctor` finds Blender on PATH, in Program Files, in Steam libraries, or in /Applications; if it
+reports Python without numpy/scipy, ask the user to run `pip install numpy scipy`. Then write
+`ad/ad.json`:
 
 ```jsonc
 {
@@ -38,7 +48,7 @@ Put the logo at `ad/public/logo.svg` (see "Logo" below). Write `ad/ad.json`:
   "style": "apple3d",            // apple3d | wrapped | terminal | minimal
   "aspect": "landscape",         // landscape 16:9 | vertical 9:16 | square 1:1
   "hook": "Deploys, rethought.", // opening line (2D styles; terminal prints it)
-  "command": "voltkit deploy", // terminal style only
+  "command": "voltkit deploy",   // terminal style only
   "shots": [ { "big": "9 s", "caption": "median deploy on the demo app." }, ... ],  // 2–5 shots
   "voiceover": []                // optional, see Step 5
 }
@@ -52,20 +62,16 @@ paints every logo layer above the base in the accent colour in 3D.
 ## Step 3 — Visuals
 
 - **2D styles:** nothing to do — the template renders from ad.json.
-- **apple3d:** render the 3D frames with Blender 4.2+ (headless; a few minutes on a laptop GPU).
-  Find Blender first: `blender` on PATH, else `C:\Program Files\Blender Foundation\Blender */blender.exe`,
-  a Steam install (`<Steam library>\steamapps\common\Blender\blender.exe`),
-  `/Applications/Blender.app/Contents/MacOS/Blender`, or `flatpak run org.blender.Blender`.
-  If there's none, tell the user and offer a 2D style instead. Run the full `anim` render in the
-  background (it takes minutes) and wait for it to finish:
+- **apple3d:** render the 3D frames with Blender 4.2+, from the `ad/` folder:
   ```bash
-  blender -b --factory-startup -P ${CLAUDE_SKILL_DIR}/scripts/logo_ad.py -- ad.json still out/stills      # check first
-  blender -b --factory-startup -P ${CLAUDE_SKILL_DIR}/scripts/logo_ad.py -- ad.json anim public/frames    # then all frames
+  npx product-ad-video@1.1.0 frames ad.json still     # one still per shot -> out/stills (seconds)
+  npx product-ad-video@1.1.0 frames ad.json anim      # every frame -> public/frames (minutes)
   ```
-  Look at the stills before the full render (one per shot + the end). Re-run `anim` after any
-  change to `shots` count or `aspect` — the frames must match ad.json.
+  Look at the stills before the full render. Run `anim` in the background and wait for it.
+  Re-run `anim` after any change to the `shots` count or `aspect` — the frames must match ad.json.
+  If Blender isn't found, tell the user (they can set `BLENDER=/path/to/blender`) and offer a 2D style.
 
-Preview anytime: `npx remotion@4.0.543 studio`. Single frame: `npx remotion@4.0.543 still Ad out/f.png --frame=120`.
+Preview anytime: `npx product-ad-video@1.1.0 studio`. Single frame: `npx product-ad-video@1.1.0 still 120 out/f.png`.
 Look at stills of every shot in the chosen aspect before rendering.
 
 ### Logo
@@ -79,33 +85,34 @@ Look at stills of every shot in the chosen aspect before rendering.
 ## Step 4 — Sound
 
 ```bash
-python ${CLAUDE_SKILL_DIR}/scripts/auto_cues.py ad.json
+npx product-ad-video@1.1.0 sound ad.json
 ```
 Writes `public/audio/soundtrack.wav` (Remotion picks it up automatically) and `cues.json`
-(hand-tune it, then `python ${CLAUDE_SKILL_DIR}/scripts/score.py cues.json`). Everything is synthesized:
+(hand-tune it, then `npx product-ad-video@1.1.0 score cues.json`). Everything is synthesized:
 style-specific cues (cuts, whooshes, glints, pops, keystrokes) on exact frames plus a 96 BPM music
 bed that drops before the end card and resolves on it. It prints loudness per second; body
 around −22…−14 dBFS with the end hit loudest is healthy. Details: `references/sound.md`.
 
 ## Step 5 — Voiceover (optional)
 
-Write N+2 short lines (≤ 6 words): one for the hook, one per shot, one for the end card
-(name + tagline). Then:
+Only when the user asks for a voice. This step sends the voiceover lines — and nothing else — to
+the public Kokoro demo on Hugging Face; say so before running it. Write N+2 short lines
+(≤ 6 words) to `lines.txt`: one for the hook, one per shot, one for the end card (name + tagline). Then:
 ```bash
-python ${CLAUDE_SKILL_DIR}/scripts/kokoro_tts.py lines.txt vo am_michael     # free hosted Kokoro
+npx product-ad-video@1.1.0 voice lines.txt vo am_michael
 ```
-Set `"voiceover": ["vo/am_michael/vo-1.wav", ...]` in ad.json and re-run `auto_cues.py`;
-it places each line on its shot and ducks the music. It prints each line's span — make sure no
-line runs past the next one (shorten the line if it does). Options: `references/voiceover.md`.
+Set `"voiceover": ["vo/am_michael/vo-1.wav", ...]` in ad.json and re-run `sound`; it places each
+line on its shot and ducks the music. It prints each line's span — make sure no line runs past
+the next one (shorten the line if it does). Options: `references/voiceover.md`.
 
 ## Step 6 — Render and deliver
 
 ```bash
-npx remotion@4.0.543 render Ad out/ad.mp4
+npx product-ad-video@1.1.0 render          # -> out/ad.mp4
 ```
 Send the MP4 to the user. Say plainly you cannot hear audio: timing and levels were checked
-numerically. Offer the other aspect (vertical for social) — just change `aspect`, re-render
-frames if 3D, re-run auto_cues, render again.
+numerically. Offer the other aspect (vertical for social) — change `aspect`, re-render frames if
+3D, re-run `sound`, render again.
 
 ## Rules
 
@@ -116,7 +123,7 @@ frames if 3D, re-run auto_cues, render again.
 
 ## Custom work
 
-The template is plain React: edit `template/src/styles/*.tsx` for bespoke scenes, or write a fully
-custom Blender scene like `examples/ghostcommits/ghost_scene.py` (hand-built 3D mascot, props,
-six-shot choreography). Guides: `references/remotion-2d.md`, `references/blender-3d.md`,
-`references/storyboard.md`.
+The template in `ad/` is plain React: edit `src/styles/*.tsx` for bespoke scenes. For a fully custom
+Blender scene (hand-built mascot, props, six-shot choreography), see the GhostCommits example at
+https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/examples/ghostcommits.
+Guides: `references/remotion-2d.md`, `references/blender-3d.md`, `references/storyboard.md`.

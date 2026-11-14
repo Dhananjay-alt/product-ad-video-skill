@@ -1,4 +1,4 @@
-# Sound design with scripts/score.py
+# Sound design (product-ad-video sound / score)
 
 Everything is synthesized with numpy/scipy: no sample packs, no licensing questions.
 

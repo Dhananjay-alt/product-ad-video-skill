@@ -1,6 +1,6 @@
 # 3D product-ad style in Blender (headless, scripted)
 
-No manual modelling: one Python script (`../examples/ghostcommits/ghost_scene.py`, Blender 4.2+/5.x)
+No manual modelling: one Python script (ghost_scene.py in https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/examples/ghostcommits, Blender 4.2+/5.x)
 builds geometry, materials, lights and camera, keyframes per frame, and renders.
 
 Run: `blender -b --factory-startup -P scene.py -- <mode> <out>`

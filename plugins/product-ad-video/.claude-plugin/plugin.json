@@ -2,7 +2,7 @@
   "name": "product-ad-video",
   "displayName": "Product Ad Video",
   "description": "Make launch videos for your product in code: your SVG logo as a glossy 3D ad, or 2D motion graphics, with synthesized sound and an optional AI voiceover. Landscape, vertical or square. Requires Claude Code on your own computer.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "author": {
     "name": "Dhananjay Hire",
     "url": "https://github.com/Dhananjay-alt"

@@ -123,7 +123,7 @@ blender -b --factory-startup -P ghost_scene.py -- anim ../public/v2
 Re-encode the video (from `video`):
 
 ```
-npx remotion@4.0.543 render GhostCommitsAdV2 out/ghostcommits-ad-v2.mp4
+npx --package=@remotion/cli@4.0.543 remotion render GhostCommitsAdV2 out/ghostcommits-ad-v2.mp4
 ```
 
 ---
