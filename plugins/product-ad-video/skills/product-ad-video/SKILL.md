@@ -10,7 +10,7 @@ read it, so cuts, text and sound stay in sync automatically.
 
 The code lives in the public npm package **`product-ad-video`** (source:
 https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/packages/product-ad-video).
-Always run it at the exact version **1.1.0**, as written below — never `@latest` or unpinned.
+Always run it at the exact version **1.1.1**, as written below — never `@latest` or unpinned.
 Tell the user once, before the first command, that you'll run this package via npx (it renders with the Remotion 4.0.543 that `npm install` puts in `ad/`).
 
 ```
@@ -31,8 +31,8 @@ use a concrete fact ("1 command", "Open source").
 
 From the user's project folder:
 ```bash
-npx product-ad-video@1.1.0 doctor                         # Node, Python + numpy/scipy, Blender
-npx product-ad-video@1.1.0 init ad --logo path/to/logo.svg # copies the Remotion template into ad/
+npx product-ad-video@1.1.1 doctor                         # Node, Python + numpy/scipy, Blender
+npx product-ad-video@1.1.1 init ad --logo path/to/logo.svg # copies the Remotion template into ad/
 cd ad && npm install
 ```
 `doctor` finds Blender on PATH, in Program Files, in Steam libraries, or in /Applications; if it
@@ -64,14 +64,14 @@ paints every logo layer above the base in the accent colour in 3D.
 - **2D styles:** nothing to do — the template renders from ad.json.
 - **apple3d:** render the 3D frames with Blender 4.2+, from the `ad/` folder:
   ```bash
-  npx product-ad-video@1.1.0 frames ad.json still     # one still per shot -> out/stills (seconds)
-  npx product-ad-video@1.1.0 frames ad.json anim      # every frame -> public/frames (minutes)
+  npx product-ad-video@1.1.1 frames ad.json still     # one still per shot -> out/stills (seconds)
+  npx product-ad-video@1.1.1 frames ad.json anim      # every frame -> public/frames (minutes)
   ```
   Look at the stills before the full render. Run `anim` in the background and wait for it.
   Re-run `anim` after any change to the `shots` count or `aspect` — the frames must match ad.json.
   If Blender isn't found, tell the user (they can set `BLENDER=/path/to/blender`) and offer a 2D style.
 
-Preview anytime: `npx product-ad-video@1.1.0 studio`. Single frame: `npx product-ad-video@1.1.0 still 120 out/f.png`.
+Preview anytime: `npx product-ad-video@1.1.1 studio`. Single frame: `npx product-ad-video@1.1.1 still 120 out/f.png`.
 Look at stills of every shot in the chosen aspect before rendering.
 
 ### Logo
@@ -85,10 +85,10 @@ Look at stills of every shot in the chosen aspect before rendering.
 ## Step 4 — Sound
 
 ```bash
-npx product-ad-video@1.1.0 sound ad.json
+npx product-ad-video@1.1.1 sound ad.json
 ```
 Writes `public/audio/soundtrack.wav` (Remotion picks it up automatically) and `cues.json`
-(hand-tune it, then `npx product-ad-video@1.1.0 score cues.json`). Everything is synthesized:
+(hand-tune it, then `npx product-ad-video@1.1.1 score cues.json`). Everything is synthesized:
 style-specific cues (cuts, whooshes, glints, pops, keystrokes) on exact frames plus a 96 BPM music
 bed that drops before the end card and resolves on it. It prints loudness per second; body
 around −22…−14 dBFS with the end hit loudest is healthy. Details: `references/sound.md`.
@@ -99,7 +99,7 @@ Only when the user asks for a voice. This step sends the voiceover lines — and
 the public Kokoro demo on Hugging Face; say so before running it. Write N+2 short lines
 (≤ 6 words) to `lines.txt`: one for the hook, one per shot, one for the end card (name + tagline). Then:
 ```bash
-npx product-ad-video@1.1.0 voice lines.txt vo am_michael
+npx product-ad-video@1.1.1 voice lines.txt vo am_michael
 ```
 Set `"voiceover": ["vo/am_michael/vo-1.wav", ...]` in ad.json and re-run `sound`; it places each
 line on its shot and ducks the music. It prints each line's span — make sure no line runs past
@@ -108,7 +108,7 @@ the next one (shorten the line if it does). Options: `references/voiceover.md`.
 ## Step 6 — Render and deliver
 
 ```bash
-npx product-ad-video@1.1.0 render          # -> out/ad.mp4
+npx product-ad-video@1.1.1 render          # -> out/ad.mp4
 ```
 Send the MP4 to the user. Say plainly you cannot hear audio: timing and levels were checked
 numerically. Offer the other aspect (vertical for social) — change `aspect`, re-render frames if

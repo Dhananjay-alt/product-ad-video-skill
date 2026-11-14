@@ -4,7 +4,7 @@ Options, best first (from experience on the GhostCommits ad)
 
 1. **ElevenLabs** — most natural. Free tier often says "generations are busy"; paid credits are reliable.
 2. **Kokoro** (open-weight, 82 M params) — close to ElevenLabs for short ad lines, free.
-   - Hosted: `npx product-ad-video@1.1.0 voice lines.txt vo am_michael` (uses the hexgrad/Kokoro-TTS demo).
+   - Hosted: `npx product-ad-video@1.1.1 voice lines.txt vo am_michael` (uses the hexgrad/Kokoro-TTS demo).
    - Local: `pip install kokoro soundfile` (Python 3.10–3.12, ~330 MB model, CPU is fine).
    - Voices worth trying: `am_michael` (deep, ad-like — chosen for GhostCommits), `am_fenrir`, `af_heart`.
    - Pronunciation fix: `[Zcash](/zˈikæʃ/)` — markdown link with IPA.

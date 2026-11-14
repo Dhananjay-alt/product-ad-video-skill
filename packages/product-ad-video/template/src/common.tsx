@@ -55,8 +55,9 @@ export const Stat: React.FC<{
     return { opacity: a * (1 - out), transform: `translateY(${lerp(30, 0, a) * L.u}px)` };
   };
   const pad = (L.landscape ? 140 : 80) * L.u;
-  const maxW = L.landscape ? L.width * 0.55 : L.width - 2 * pad;
-  const bigSize = fitSize(big, (L.landscape ? 200 : 190) * L.u, maxW);
+  /* landscape: the 3D hero sits right of centre, so the headline must stay in the left ~half */
+  const maxW = L.landscape ? L.width * 0.44 : L.width - 2 * pad;
+  const bigSize = fitSize(big, (L.landscape ? 200 : 190) * L.u, maxW, 0.6);
   return (
     <AbsoluteFill style={{ fontFamily: SANS, color }}>
       {scrim ? (

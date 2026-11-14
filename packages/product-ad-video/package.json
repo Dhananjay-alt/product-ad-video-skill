@@ -1,6 +1,6 @@
 {
   "name": "product-ad-video",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Make product launch videos in code: SVG logo to 3D ad (Blender) or 2D motion graphics (Remotion), with synthesized sound and optional voiceover. The engine behind the Product Ad Video plugin for Claude Code.",
   "bin": {
     "product-ad-video": "bin/cli.js"

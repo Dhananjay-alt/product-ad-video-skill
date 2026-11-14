@@ -18,7 +18,7 @@ Only the following, and only as each step runs:
 
 | When | What is sent | To |
 |---|---|---|
-| Running `npx product-ad-video@1.1.0` and installing the template | Package requests (no project data) | The public npm registry (registry.npmjs.org) |
+| Running `npx product-ad-video@1.1.1` and installing the template | Package requests (no project data) | The public npm registry (registry.npmjs.org) |
 | Rendering | Font requests (no project data) | Google Fonts (fonts.googleapis.com, fonts.gstatic.com) |
 | Voiceover, only if you ask for `voice` | The voiceover lines, about six short sentences of ad copy | The public Kokoro demo on Hugging Face (hexgrad-kokoro-tts.hf.space) |
 

@@ -61,12 +61,12 @@ Set `"aspect"` to `landscape` (16:9), `vertical` (9:16 for Reels, TikTok and Sho
 Everything the plugin does is also a plain CLI on npm, [`product-ad-video`](https://www.npmjs.com/package/product-ad-video):
 
 ```bash
-npx product-ad-video@1.1.0 init my-ad --logo logo.svg && cd my-ad && npm install
+npx product-ad-video@1.1.1 init my-ad --logo logo.svg && cd my-ad && npm install
 # edit ad.json
-npx product-ad-video@1.1.0 doctor                 # checks Node, Python (numpy, scipy), Blender
-npx product-ad-video@1.1.0 frames ad.json anim    # apple3d only: renders the 3D frames in Blender
-npx product-ad-video@1.1.0 sound ad.json          # synthesizes the soundtrack
-npx product-ad-video@1.1.0 render                 # -> out/ad.mp4
+npx product-ad-video@1.1.1 doctor                 # checks Node, Python (numpy, scipy), Blender
+npx product-ad-video@1.1.1 frames ad.json anim    # apple3d only: renders the 3D frames in Blender
+npx product-ad-video@1.1.1 sound ad.json          # synthesizes the soundtrack
+npx product-ad-video@1.1.1 render                 # -> out/ad.mp4
 ```
 
 Your logo must be an SVG of filled shapes; convert strokes and text to paths first. A dark rounded square behind a coloured mark (app-icon style) looks best in 3D.
@@ -110,7 +110,7 @@ Clone the repo and copy the skill folder into a skills directory: `~/.claude/ski
 ```bash
 git clone https://github.com/Dhananjay-alt/product-ad-video-skill.git
 mkdir -p ~/.claude/skills && cp -r product-ad-video-skill/plugins/product-ad-video/skills/product-ad-video ~/.claude/skills/
-# the skill runs the code through npx product-ad-video@1.1.0, so nothing else needs copying
+# the skill runs the code through npx product-ad-video@1.1.1, so nothing else needs copying
 ```
 
 </details>
@@ -129,13 +129,13 @@ mkdir -p ~/.claude/skills && cp -r product-ad-video-skill/plugins/product-ad-vid
 **Generate voiceover lines** (one line per row in a text file):
 
 ```bash
-npx product-ad-video@1.1.0 voice lines.txt vo am_michael af_heart
+npx product-ad-video@1.1.1 voice lines.txt vo am_michael af_heart
 ```
 
 **Score a video from a hand-written cue sheet:**
 
 ```bash
-npx product-ad-video@1.1.0 score cues.json
+npx product-ad-video@1.1.1 score cues.json
 ```
 
 ```jsonc

@@ -8,12 +8,12 @@ The engine behind the **Product Ad Video** plugin for Claude Code: make an 18-se
 - `voice`: generates voiceover lines with Kokoro (optional)
 
 ```bash
-npx product-ad-video@1.1.0 init ad --logo logo.svg
+npx product-ad-video@1.1.1 init ad --logo logo.svg
 cd ad && npm install
-npx product-ad-video@1.1.0 doctor
-npx product-ad-video@1.1.0 frames ad.json anim      # apple3d style only
-npx product-ad-video@1.1.0 sound ad.json
-npx product-ad-video@1.1.0 render                # -> out/ad.mp4
+npx product-ad-video@1.1.1 doctor
+npx product-ad-video@1.1.1 frames ad.json anim      # apple3d style only
+npx product-ad-video@1.1.1 sound ad.json
+npx product-ad-video@1.1.1 render                # -> out/ad.mp4
 ```
 
 ## What it runs and sends

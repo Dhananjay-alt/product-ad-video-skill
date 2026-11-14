@@ -41,10 +41,10 @@ The finished video is saved as `ad/out/ad.mp4` in your project, with every input
 
 ## What it runs, sends and fetches
 
-This plugin contains only instructions (Markdown) and metadata. The code that makes the video is the open-source npm package [`product-ad-video`](https://www.npmjs.com/package/product-ad-video), pinned to version 1.1.0 ([source](https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/packages/product-ad-video)). Everything runs on your machine, in a new `ad/` folder inside your project. The plugin has no servers of its own and collects nothing.
+This plugin contains only instructions (Markdown) and metadata. The code that makes the video is the open-source npm package [`product-ad-video`](https://www.npmjs.com/package/product-ad-video), pinned to version 1.1.1 ([source](https://github.com/Dhananjay-alt/product-ad-video-skill/tree/main/packages/product-ad-video)). Everything runs on your machine, in a new `ad/` folder inside your project. The plugin has no servers of its own and collects nothing.
 
 - **Local programs:** Claude Code asks your permission before each of these commands, as usual.
-  - `npx product-ad-video@1.1.0`: copies the template, builds the soundtrack, runs Blender for the 3D frames, and renders the video with Remotion.
+  - `npx product-ad-video@1.1.1`: copies the template, builds the soundtrack, runs Blender for the 3D frames, and renders the video with Remotion.
   - `npm install`: Remotion 4.0.543 and React, from the public npm registry.
   - Python 3 (numpy, scipy) for the sound, and `blender` in headless mode for the 3D style.
 - **Fonts:** at render time Remotion downloads the Inter and JetBrains Mono fonts from Google Fonts (fonts.googleapis.com and fonts.gstatic.com).

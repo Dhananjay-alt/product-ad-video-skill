@@ -202,7 +202,7 @@ def framed(r, lens, deg, h, subject=(0, 0, 0), side=1.0):
     """Camera on a circle round the hero, shifted so the hero clears the text block.
     Landscape: text lower-left, hero right of centre. Vertical/square: text at the bottom, hero high."""
     vw, vh = view_size(r, lens)
-    off = 0.2 * vw * side if W > H else 0.0
+    off = 0.23 * vw * side if W > H else 0.0
     zoff = 0.0 if W > H else -0.17 * vh * side
     a = math.radians(deg)
     right = (math.cos(a), math.sin(a))
